@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+
+        <!-- All Trips page -->
+
+        <!-- Display a heading if there are trips, including their count -->
+        {% if trips %}
+        <h2>4 Shared Trips</h2>
+            {% for trip in trips %}
+                <section id="dashboard">
+
+            <!-- Display a div with information about each trip (if any). Trips must be ordered by start_date descending -->
+
+            <!-- first trip -->
+                    <div class="post">
+                        <!-- trip image if there is such, otherwise display the default one -->
+                        {% if not trip.img_url %}
+                            <img src="https://cdn.pixabay.com/photo/2019/09/17/17/56/machu-picchu-4484205_1280.jpg"
+                                alt="Cusco, Peru img" />
+                        {% else %}
+                            <img src="{{ trip.img_url }}"
+                                alt="trip image" />
+                        {% endif %}
+                        <!-- trip destination -->
+                        <h3 class="title">{{ trip.destination }}</h3>
+                        <!-- trip start date in format "D d M Y" -->
+                        <p class="description">{{ trip.start_date|date:'D d M Y'}}</p>
+                        <!-- trip details button -->
+                        <a class="details-btn" href="#">{{ trip.summary }}</a>
+                    </div>
+                </section>
+            {% endfor %}
+        <!-- Display a heading if there are NO trips -->
+        {% else %}
+        <h2>No shared trips</h2>
+        {% endif %}
+
+    </main>
+{% endblock %}
