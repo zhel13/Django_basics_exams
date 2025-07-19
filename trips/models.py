@@ -13,7 +13,9 @@ class Trip(models.Model):
         ]
     )
     summary = models.TextField()
-    start_date = models.DateField()
+    start_date = models.DateField(
+
+    )
     duration = models.SmallIntegerField(
         default=1,
         help_text="*Duration in days is expected."
