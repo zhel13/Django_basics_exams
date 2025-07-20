@@ -9,15 +9,14 @@ class ContextMixin:
         context['traveler'] = get_traveler()
         return context
 
+
 class AllTrips(ContextMixin, ListView):
     queryset = get_trips()
     context_object_name = 'trips'
     template_name = 'all-trips.html'
 
 
-
-
-class IndexView(ContextMixin ,TemplateView):
+class IndexView(ContextMixin, TemplateView):
     template_name = 'index.html'
 
 
